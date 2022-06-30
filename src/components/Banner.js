@@ -37,12 +37,12 @@ const Container = Styled.div `
         z-index: -1;
     }
     
-    @media(min-width:768px){
+    
 
 
-          height:60vh;
+         
 
-        }
+
 
     .header__content{
         display: flex;
