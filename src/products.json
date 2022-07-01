@@ -66,6 +66,45 @@
             "artType": "Handcrafted",
             "countInStock": 2
         }
+    ],
+
+
+    "users": [
+        {
+            "_id": "621e5278e900e959d902ddb1",
+            "name": "admin",
+            "email": "admin@gmail.com",
+            "phone": 6475555555,
+            "role": "admin"
+        },
+        {
+            "_id": "621e5278e900e959d902ddb2",
+            "name": "akash",
+            "email": "akash@yahoo.com",
+            "phone": 6789343434,
+            "role": "user"
+        },
+        {
+            "_id": "621e5278e900e959d902ddb3",
+            "name": "Vishwanath",
+            "email": "vishwanathvishwabai@gmail.com",
+            "phone": 6754545454,
+            "role": "user"
+        },
+        {
+            "_id": "621e5278e900e959d902ddb4",
+            "name": "venkatesh",
+            "email": "venkatesh@gmail.com",
+            "phone": 9756565656,
+            "role": "maker"
+        },
+        {
+            "_id": "621e5278e900e959d902ddb5",
+            "name": "hari",
+            "email": "hari@gmail.com",
+            "phone": 6956868686,
+            "role": "maker"
+        }
     ]
 } 
 
