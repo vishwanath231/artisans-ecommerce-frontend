@@ -136,7 +136,7 @@ const Dashboard = () => {
                             <div className='mt-1 text-md font-medium'>+67</div>
                         </div>
                     </Link>
-                    <Link to='' className='flex items-center shadow p-4 rounded hover:shadow-xl'>
+                    <Link to='/admin/productList' className='flex items-center shadow p-4 rounded hover:shadow-xl'>
                         <div className='bg-green-200 p-2 rounded mr-6'>
                             <svg version="1.0" className='w-16 h-16' viewBox="0 0 512.000000 512.000000">
                             <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"

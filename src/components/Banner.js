@@ -16,7 +16,7 @@ const Banner = () => {
 const Container = Styled.div `
 
     width: 100%;
-    height:fit-content;
+    height: 60vh;
     background: url('images/bg1.jpg');
     // background-attachment: fixed;
     background-repeat: no-repeat;
@@ -36,13 +36,6 @@ const Container = Styled.div `
         background: rgba(0,0,0,0.6);
         z-index: -1;
     }
-    
-    
-
-
-         
-
-
 
     .header__content{
         display: flex;

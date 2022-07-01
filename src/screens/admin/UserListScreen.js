@@ -3,6 +3,9 @@ import Header from './components/Header';
 import MobileNav from './components/MobileNav';
 import SideBar from './components/SideBar';
 import products from '../../products.json';
+import { BiPlus } from 'react-icons/bi';
+import { Link } from 'react-router-dom';
+
 
 const UserListScreen = () => {
 
@@ -16,14 +19,25 @@ const UserListScreen = () => {
     }, [])
     
    
-    const searchHandle = (e) => {
+    const searchHandler = (e) => {
         if (e.target.value !== '') {
             const filter = userData.filter(item => {
-                return Object.values(item).join('').toLowerCase().includes(e.target.value)
+                return Object.values(item).join('').toLowerCase().includes(e.target.value.toLowerCase())
             })
             setFilterData(filter)
         }else{
             setFilterData(userData)
+        }
+    }
+
+    const userUpdateHandler = (id) => {
+        console.log(id);
+    }
+    
+    const userDeleteHandler = (id) => {
+        if (window.confirm(`Are you sure, you want delete ${id}!`)) {
+            
+            console.log(id);
         }
     }
     
@@ -34,7 +48,10 @@ const UserListScreen = () => {
             <MobileNav />
             <Header />
             <div className='md:ml-72 px-4 md:px-2'>
-                <div className='flex w-fit mx-auto justify-center items-center shadow-md  rounded'>
+                <div className='my-6 text-3xl font-bold tracking-wide uppercase md:text-center'>
+                    users
+                </div>
+                {/* <div className='flex w-fit mx-auto justify-center items-center shadow-md  rounded'>
                     <div className='flex items-center m-4'>
                         <div className='bg-green-200 rounded mr-4'>
                         <svg version="1.0" className='w-16 h-16' viewBox="0 0 512.000000 512.000000">
@@ -88,75 +105,59 @@ const UserListScreen = () => {
                             <p className='mt-1 font-medium text-md'>{userData.length}</p>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <input
-                        name='search'
-                        type='search'
-                        onChange={searchHandle}
-                        placeholder='search...'
-                    />
+                </div> */}
+                <div className='flex justify-between items-center flex-col md:flex-row'>
+                    <Link to='' className='py-2 w-full mb-4 md:mb-0 md:w-fit px-4 sen-font bg-[#83c5be] rounded shadow flex items-center'>
+                        <BiPlus /> <span>Create User</span>
+                    </Link>
+                    <div className='w-full md:w-72 '>
+                        <input
+                            name='search'
+                            type='search'
+                            onChange={searchHandler}
+                            placeholder='search...'
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg outline-[#edf2f4] focus:ring-[#83c5be] focus:border-[#83c5be] w-full p-2.5"
+                        />
+                    </div>
                 </div>
                 
                 <div className="relative overflow-x-auto my-10">
                     <table className="w-full text-sm text-left text-black ">
-                        <thead className="text-xs text-black mont-font uppercase bg-gray-200">
-                            <tr>
-                                <th className="px-6 py-3">ID</th>
-                                <th className="px-6 py-3">NAME</th>
-                                <th className="px-6 py-3">EMAIL</th>
-                                <th className="px-6 py-3">PHONE</th>
-                                <th className="px-6 py-3">
+                        <thead className="text-xs text-black mont-font text-white uppercase bg-[#0b2545]">
+                            <tr className='border border-gray-300'>
+                                <th className="px-6 py-3 border border-gray-300">ID</th>
+                                <th className="px-6 py-3 border border-gray-300">NAME</th>
+                                <th className="px-6 py-3 border border-gray-300">EMAIL</th>
+                                <th className="px-6 py-3 border border-gray-300">PHONE</th>
+                                <th className="px-6 py-3 border border-gray-300">
                                     <span className="sr-only">ACTION</span>
                                 </th>
                             </tr>
                         </thead>
                         <tbody>
-                        {
-                            filterData.length  ? (
-                                <>
-                                    {
-                                    filterData.map((val) => (
-                                        <tr key={val._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 sen-font">
-                                            <td className="px-6 py-4">{val._id}</td>
-                                            <td className="px-6 py-4">{val.name}</td>
-                                            <td className="px-6 py-4"><a href={`mailto:${val.email}`} className='hover:underline'>{val.email}</a></td>
-                                            <td className="px-6 py-4">{val.phone}</td>
-                                            <td className='px-4 py-2'>
-                                                <button className='shadow hover:shadow-green-200 hover:shadow-md px-3 py-1 mr-1'>
-                                                    <i className='fas fa-edit text-green-500'></i>
-                                                </button>
-                                                <button className='shadow px-3 py-1 hover:shadow-red-200 hover:shadow-md'>
-                                                    <i className='fas fa-trash text-red-500'></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    ))
-                                }
-                                </>
-                            ) : (
-                                <>
-                                    {
-                            userData.map((val) => (
-                                <tr key={val._id} className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 sen-font">
-                                    <td className="px-6 py-4">{val._id}</td>
-                                    <td className="px-6 py-4">{val.name}</td>
-                                    <td className="px-6 py-4"><a href={`mailto:${val.email}`} className='hover:underline'>{val.email}</a></td>
-                                    <td className="px-6 py-4">{val.phone}</td>
-                                    <td className='px-4 py-2'>
-                                        <button className='shadow hover:shadow-green-200 hover:shadow-md px-3 py-1 mr-1'>
-                                            <i className='fas fa-edit text-green-500'></i>
-                                        </button>
-                                        <button className='shadow px-3 py-1 hover:shadow-red-200 hover:shadow-md'>
-                                            <i className='fas fa-trash text-red-500'></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))
-                        }
-                                </>
-                            )
-                        }
+                            {
+                                filterData.length  ? (
+                                    <>
+                                        {
+                                            filterData.map((val) => (
+                                                <React.Fragment key={val._id}>
+                                                    <UserComponents val={val} userUpdateHandler={userUpdateHandler} userDeleteHandler={userDeleteHandler} />
+                                                </React.Fragment>
+                                            ))
+                                        }
+                                    </>
+                                ) : (
+                                    <>
+                                        {
+                                            userData.map((val) => (
+                                                <React.Fragment key={val._id}>
+                                                    <UserComponents val={val} userUpdateHandler={userUpdateHandler} userDeleteHandler={userDeleteHandler} />
+                                                </React.Fragment>
+                                            ))
+                                        }
+                                    </>
+                                )
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -166,3 +167,27 @@ const UserListScreen = () => {
 }
 
 export default UserListScreen;
+
+
+const UserComponents = ({val, userUpdateHandler, userDeleteHandler}) => {
+
+    return(
+        <tr key={val._id} className="bg-white border border-gray-300 transition duration-300 ease-in-out hover:bg-gray-200 sen-font">
+            <td className="px-6 py-4 border border-gray-300">{val._id}</td>
+            <td className="px-6 py-4 border border-gray-300">{val.name}</td>
+            <td className="px-6 py-4 border border-gray-300"><a href={`mailto:${val.email}`} className='hover:underline'>{val.email}</a></td>
+            <td className="px-6 py-4 border border-gray-300">{val.phone}</td>
+            <td className='px-4 py-2 border border-gray-300'>
+            <button className='px-3 py-1' >
+                    <i className='fas fa-eye text-blue-800'></i>
+                </button>
+                <button className='px-3 py-1 mr-1' onClick={() => userUpdateHandler(val._id)}>
+                    <i className='fas fa-edit text-green-600'></i>
+                </button>
+                <button className='px-3 py-1' onClick={() => userDeleteHandler(val._id)}>
+                    <i className='fas fa-trash text-red-700'></i>
+                </button>
+            </td>
+        </tr>
+    )
+}
