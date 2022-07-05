@@ -12,8 +12,8 @@ const UnAuthorized = () => {
                 <div className='text-7xl font-black text-[#c91237] mb-4'>401</div>
                 <div className='text-3xl font-bold'>UnAuthorized</div>
             </div>
-            <div className='text-center'>
-               <Link to='/' className='text-base font-medium py-2 px-4 mont-font rounded shadow'>
+            <div className='text-center mt-3'>
+               <Link to='/' className='text-base font-medium bg-[#c91237] py-2 px-4 mont-font rounded shadow'>
                    Go Back
                </Link>
             </div>
