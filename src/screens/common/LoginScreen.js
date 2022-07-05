@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SVGicon from '../../components/svg/SVGicon';
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,15 +6,19 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 const LoginScreen = () => {
+
     
     const location = useLocation();
     const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
 
-    const redirect = location.search ? location.search.split('=')[1] : '/'
+    console.log(location.pathname);
+    console.log(location.state);
+
 
     const sampleTest = {
         email: 'vishwanathvishwabai@gmail.com',
-        phone: 6785435678
+        phone: 6385213119
     }
 
 
@@ -32,29 +36,25 @@ const LoginScreen = () => {
         })
     }
 
-    const userInfo = false
-
-    useEffect(() => {
-    
-        
-        if (userInfo) {
-            navigate(redirect)
-        }
-        
-    }, [navigate, redirect, userInfo]);
-
+    const [userInfo, setUserInfo] = useState(false);
 
     const handleSubmit = e => {
         e.preventDefault();
 
         if (loginData.phoneOrEmail === sampleTest.email || Number(loginData.phoneOrEmail) === sampleTest.phone) {
             
-            toast.success("Login success");
-            navigate('/')
             setLoginData({
                 phoneOrEmail: '',
                 password: '',
             })
+            
+           setUserInfo(true)
+            // setAuth('admin')
+            if (userInfo) {
+                navigate(from, { replace: true })
+            }
+
+
         }else{
             toast.error("Invalid Email or Phone No");
         }
@@ -100,7 +100,7 @@ const LoginScreen = () => {
                     <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Login account</button>
                 </form>
                 <div className='mt-3'>
-                    You don't have an account! <Link to={redirect ? `/register?redirect=${redirect}` : '/register' } className='text-blue-700 underline'>SignUp Here.</Link>
+                    You don't have an account! <Link to='/register' className='text-blue-700 underline'>SignUp Here.</Link>
                 </div>
             </div>
             <ToastContainer toastStyle={{ fontFamily: '"Sen",sans-serif' }} />

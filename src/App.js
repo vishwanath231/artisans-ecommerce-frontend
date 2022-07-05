@@ -16,32 +16,54 @@ import UserListScreen from './screens/admin/UserListScreen';
 import MakerListScreen from './screens/admin/MakerListScreen';
 import AdminProfileUpdateScreen from './screens/admin/AdminProfileUpdateScreen';
 import AdminOrderListScreen from './screens/admin/AdminOrderListScreen';
+import Layout from './components/Layout';
+import RequireAuth from './components/RequireAuth';
+import MakerScreen from './screens/maker/MakerScreen';
+import UnAuthorized from './screens/common/UnAuthorized';
+import NotFound from './screens/common/NotFound';
 
+const arole = {
+    admin: 'admin',
+    maker: 'maker'
+}
 
 
 const App = () => {
+
+
+
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<HomeScreen /> } />
-                <Route path='/login' element={<LoginScreen /> } />
-                <Route path='/register' element={<RegisterScreen /> } />
-                <Route path='/contact' element={<ContactScreen /> } />
-                <Route path='/search' element={<SearchScreen /> } />
-                <Route path='/wishlist' element={<WishlistScreen /> } />
-                <Route path='/cart' element={<CartScreen /> } />
-                <Route path='/product/:id' element={ <ProductScreen /> } />
+                <Route path='/' element={<Layout />}>
+                    <Route path='/' element={<HomeScreen /> } />
+                    <Route path='login' element={<LoginScreen /> } />
+                    <Route path='register' element={<RegisterScreen /> } />
+                    <Route path='contact' element={<ContactScreen /> } />
+                    <Route path='search' element={<SearchScreen /> } />
+                    <Route path='wishlist' element={<WishlistScreen /> } />
+                    <Route path='cart' element={<CartScreen /> } />
+                    <Route path='product/:id' element={ <ProductScreen /> } />
+                    
+                    <Route path='/unAuth' element={<UnAuthorized /> } />
 
-                
-                <Route path='/admin/dashboard' element={ <Dashboard /> } />
-                <Route path='/admin/userList' element={ <UserListScreen /> } />
-                <Route path='/admin/productList' element={ <ProductsListScreen /> } />
-                <Route path='/admin/makerList' element={ <MakerListScreen /> } />
-                <Route path='/admin/profile' element={ <AdminProfileUpdateScreen /> } />
-                <Route path='/admin/order' element={ <AdminOrderListScreen /> } />
-                
+                    <Route element={ <RequireAuth arole={arole.admin} /> } >
+                        <Route path='admin/dashboard' element={ <Dashboard /> } />
+                        <Route path='admin/userList' element={ <UserListScreen /> } />
+                        <Route path='admin/productList' element={ <ProductsListScreen /> } />
+                        <Route path='admin/makerList' element={ <MakerListScreen /> } />
+                        <Route path='admin/profile' element={ <AdminProfileUpdateScreen /> } />
+                        <Route path='admin/order' element={ <AdminOrderListScreen /> } />
+                    </Route>
+
+                    <Route element={ <RequireAuth arole={arole.maker} /> }>
+                        <Route path='maker' element={ <MakerScreen /> }  />
+                    </Route>
+
+                    <Route path='*' element={ <NotFound /> } />
+
+                </Route>
             </Routes>
-            {/* <CopyRights /> */}
         </BrowserRouter>
     )
 }
