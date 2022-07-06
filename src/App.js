@@ -14,7 +14,7 @@ import Dashboard from './screens/admin/Dashboard';
 import ProductsListScreen from './screens/admin/ProductsListScreen';
 import UserListScreen from './screens/admin/UserListScreen';
 import MakerListScreen from './screens/admin/MakerListScreen';
-import AdminProfileUpdateScreen from './screens/admin/AdminProfileUpdateScreen';
+import AdminProfileScreen from './screens/admin/AdminProfileScreen';
 import AdminOrderListScreen from './screens/admin/AdminOrderListScreen';
 import Layout from './components/Layout';
 import RequireAuth from './components/RequireAuth';
@@ -52,7 +52,7 @@ const App = () => {
                         <Route path='admin/userList' element={ <UserListScreen /> } />
                         <Route path='admin/productList' element={ <ProductsListScreen /> } />
                         <Route path='admin/makerList' element={ <MakerListScreen /> } />
-                        <Route path='admin/profile' element={ <AdminProfileUpdateScreen /> } />
+                        <Route path='admin/profile' element={ <AdminProfileScreen /> } />
                         <Route path='admin/order' element={ <AdminOrderListScreen /> } />
                     </Route>
 
