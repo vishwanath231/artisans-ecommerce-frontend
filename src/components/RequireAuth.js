@@ -7,14 +7,11 @@ const RequireAuth = ({ arole }) => {
 
     const roles =[
         {
-            role: 'admin',
-           
+            role: 'user',
         }
     ]
 
     const user = 'vishwanath';
-
-
 
     return (
 

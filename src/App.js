@@ -21,6 +21,10 @@ import RequireAuth from './components/RequireAuth';
 import MakerScreen from './screens/maker/MakerScreen';
 import UnAuthorized from './screens/common/UnAuthorized';
 import NotFound from './screens/common/NotFound';
+import ShippingAddress from './screens/common/ShippingAddress';
+import PaymentMethodScreen from './screens/common/PaymentMethodScreen';
+import ShippingSecure from './secure/ShippingSecure';
+import PaymentSecure from './secure/PaymentSecure';
 
 const arole = {
     admin: 'admin',
@@ -44,8 +48,17 @@ const App = () => {
                     <Route path='wishlist' element={<WishlistScreen /> } />
                     <Route path='cart' element={<CartScreen /> } />
                     <Route path='product/:id' element={ <ProductScreen /> } />
+
+
+                     <Route element={<ShippingSecure /> } >
+                        <Route path='shipping' element={<ShippingAddress /> } />
+                     </Route>
+
+                     <Route element={ <PaymentSecure /> }>
+                        <Route path='payment' element={ <PaymentMethodScreen /> } />
+                     </Route>
                     
-                    <Route path='/unAuth' element={<UnAuthorized /> } />
+                    <Route path='unAuth' element={<UnAuthorized /> } />
 
                     <Route element={ <RequireAuth arole={arole.admin} /> } >
                         <Route path='admin/dashboard' element={ <Dashboard /> } />
@@ -57,7 +70,7 @@ const App = () => {
                     </Route>
 
                     <Route element={ <RequireAuth arole={arole.maker} /> }>
-                        <Route path='maker' element={ <MakerScreen /> }  />
+                        <Route path='maker/dashboard' element={ <MakerScreen /> }  />
                     </Route>
 
                     <Route path='*' element={ <NotFound /> } />

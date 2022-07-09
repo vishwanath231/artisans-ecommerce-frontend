@@ -6,6 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Epilogue&display=swap');
 
 /* body { */
     /* font-family: 'Open Sans', sans-serif; */
@@ -16,7 +17,8 @@
 
 /* Common style */
 input, textarea {
-    font-family: 'Sen', sans-serif;
+    /* font-family: 'Sen', sans-serif; */
+    font-family: 'Epilogue', sans-serif;
 }
 
 
