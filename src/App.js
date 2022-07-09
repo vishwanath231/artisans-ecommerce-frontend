@@ -19,10 +19,10 @@ import AdminOrderListScreen from './screens/admin/AdminOrderListScreen';
 import Layout from './components/Layout';
 import RequireAuth from './components/RequireAuth';
 import MakerScreen from './screens/maker/MakerScreen';
-import UnAuthorized from './screens/common/UnAuthorized';
+import UnAuth from './screens/common/UnAuth';
 import NotFound from './screens/common/NotFound';
 import ShippingAddress from './screens/common/ShippingAddress';
-import PaymentMethodScreen from './screens/common/PaymentMethodScreen';
+import PaymentScreen from './screens/common/PaymentScreen';
 import ShippingSecure from './secure/ShippingSecure';
 import PaymentSecure from './secure/PaymentSecure';
 
@@ -55,10 +55,10 @@ const App = () => {
                      </Route>
 
                      <Route element={ <PaymentSecure /> }>
-                        <Route path='payment' element={ <PaymentMethodScreen /> } />
+                        <Route path='payment' element={ <PaymentScreen /> } />
                      </Route>
                     
-                    <Route path='unAuth' element={<UnAuthorized /> } />
+                    <Route path='unAuth' element={<UnAuth /> } />
 
                     <Route element={ <RequireAuth arole={arole.admin} /> } >
                         <Route path='admin/dashboard' element={ <Dashboard /> } />

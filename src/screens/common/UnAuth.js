@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import IMAGE from '../../assets/svg/401.svg';
 
-const UnAuthorized = () => {
+const UnAuth = () => {
     return (
         <div className='container w-full min-h-screen bg-gray-50'>
             <div className='flex justify-center mx-auto'>
@@ -13,18 +13,13 @@ const UnAuthorized = () => {
                 <div className='text-3xl font-bold'>UnAuthorized</div>
             </div>
             <p className='text-center font-medium'>Something Missing</p>
-<<<<<<< HEAD
             <div className='text-center mt-6'>
                <Link to='/' className='text-base text-white font-medium bg-[#c91237] py-2 px-4 mont-font rounded shadow'>
                    Go Back
                </Link>
-=======
-            <div className='mt-7 text-center'>
-                <Link to='/' className='mt-3 py-2 text-base mont-font px-5 rounded bg-[#c91237] text-white shadow-md'>Go Back</Link>
->>>>>>> da0d028499df694f5f076ddbc776764f4c02db63
             </div>
         </div>
     )
 }
 
-export default UnAuthorized;
+export default UnAuth;
