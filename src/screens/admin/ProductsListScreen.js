@@ -72,6 +72,7 @@ const ProductsListScreen = () => {
                         <thead className="text-xs text-black mont-font text-white uppercase bg-[#0b2545]">
                             <tr className='border border-gray-300'>
                                 <th className="px-6 py-3 border border-gray-300">ID</th>
+                                <th className="px-6 py-3 border border-gray-300">IMAGE</th>
                                 <th className="px-6 py-3 border border-gray-300">NAME</th>
                                 <th className="px-6 py-3 border border-gray-300">PRICE</th>
                                 <th className="px-6 py-3 border border-gray-300">CATEGORY</th>
@@ -120,6 +121,9 @@ const ProductComponent = ({val, productUpdateHandler, productDeleteHandler }) =>
     return (
         <tr className="bg-white border border-gray-300 transition duration-300 ease-in-out hover:bg-gray-200 sen-font">
             <td className="px-6 py-4 border border-gray-300">{val._id}</td>
+            <td className="px-6 py-4 border border-gray-300">
+                <img src={val.image} className='w-10 h-10' alt={val.name} />
+            </td>
             <td className="px-6 py-4 border border-gray-300">{val.name}</td>
             <td className="px-6 py-4 border border-gray-300">{val.price}</td>
             <td className="px-6 py-4 border border-gray-300">{val.category}</td>
