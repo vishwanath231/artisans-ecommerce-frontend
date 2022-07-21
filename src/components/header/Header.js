@@ -19,7 +19,7 @@ const Header = () => {
             <div className='flex flex-wrap justify-center flex-col lg:flex-row  lg:justify-between items-center container max-w-screen-xl mx-auto'>
             <div className="ticker-wrapper-h">
                 <ul className="news-ticker-h text-black font font-medium">
-                    <li><Link to=''>What is Lorem Ipsum?</Link></li>
+                    <li><Link to=''>20% Offer</Link></li>
                     <li><Link to=''>Why do we use it?</Link></li>
                     <li><Link to=''> Where does it come from?</Link></li>
                     <li><Link to=''>Where can I get some?</Link></li>
