@@ -7,7 +7,7 @@ const RequireAuth = ({ arole }) => {
 
     const roles =[
         {
-            role: 'admin',
+            role: 'user',
         }
     ]
 
